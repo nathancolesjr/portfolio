@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Nathan Coles Jr.</title>
+    <script>
+      (function () {
+        const { protocol, hostname, port, pathname, search, hash } = window.location;
+        const portSegment = port ? ":" + port : "";
+        const encodedPath = pathname
+          .split("/")
+          .map((segment) => encodeURIComponent(segment))
+          .join("/");
+        const encodedSearch = search ? "&" + search.slice(1).replace(/&/g, "~and~") : "";
+
+        window.location.replace(
+          protocol + "//" + hostname + portSegment + "/?/" + encodedPath.slice(1) + encodedSearch + hash
+        );
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
